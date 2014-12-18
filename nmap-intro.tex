@@ -111,7 +111,8 @@ Since Nmap is a complex tool, someone who's just getting started might feel over
 \clearpage
 \pagenumbering{arabic}
 
-\chapter{Introduction}
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction} \markboth{INTRODUCTION}{}
 This guide assumes the reader has basic knowledge of the Internet Protocol suite (how TCP and UDP are related, how they use IP, what IP addresses and port numbers are and knowledge of the different TCP flags)\footnote{A good reference on the Internet protocol suite is TCP/IP Illustrated, Volume 1: The Protocols (2nd Edition) by Kevin R. Fall and W. Richard Stevens}.
 
 \section{Setup}
@@ -163,7 +164,8 @@ Nmap done: 1 IP address (1 host up) scanned in 1.24 seconds
 
 By default, Nmap scans the most commonly used 1000 TCP ports on the target host. The \texttt{-p} option can be used for specifying which ports should be scanned (e.g. the argument \texttt{-pU:53,111,137,T:21-25,80,139,8080} instructs Nmap to scan UDP ports 53, 111 and 137, as well as TCP ports from 21 to 25, 80, 139 and 8080).
 
-\chapter{Host Discovery}
+\chapter*{Host Discovery}
+\addcontentsline{toc}{chapter}{Host Discovery} \markboth{HOST DISCOVERY}{}
 
 Network scans usually begin by discovering which targets on the network are online and thus worth deeper investigation.
 
@@ -218,7 +220,8 @@ PORT      STATE    SERVICE
 Nmap done: 1 IP address (1 host up) scanned in 794.23 seconds
 \end{lstlisting}
 
-\chapter{Port Scanning}
+\chapter*{Port Scanning}
+\addcontentsline{toc}{chapter}{Port Scanning} \markboth{PORT SCANNING}{}
 
 After making sure the target system is alive, the natural next step is trying to identify the system's ports states. And while Nmap has evolved in functionality over the years, port scanning remains its core function.
 
@@ -401,7 +404,8 @@ PORT    STATE         SERVICE
 Nmap done: 1 IP address (1 host up) scanned in 1.49 seconds
 \end{lstlisting}
 
-\chapter{Version Detection}
+\chapter*{Version Detection}
+\addcontentsline{toc}{chapter}{Version Detection} \markboth{VERSION DETECTION}{}
 
 While it is useful to know whether certain ports on a remote machine are open or closed, you sometimes want to know which email, DNS and HTTP servers are running and their respective versions. This might be extremely useful, because having an accurate version number helps dramatically in determining which exploits a server is vulnerable to. Thus, Nmap provides the -sV option for enabling version detection.
 
@@ -425,7 +429,8 @@ Service detection performed. Please report any incorrect results at http://nmap.
 Nmap done: 1 IP address (1 host up) scanned in 10.17 seconds
 \end{lstlisting}
 
-\chapter{OS Detection}
+\chapter*{OS Detection}
+\addcontentsline{toc}{chapter}{OS Detection} \markboth{OS DETECTION}{}
 
 Another useful feature provided by Nmap is remote OS detection using TCP/IP stack fingerprinting.
 
@@ -458,7 +463,8 @@ OS detection performed. Please report any incorrect results at http://nmap.org/s
 Nmap done: 1 IP address (1 host up) scanned in 152.86 seconds
 \end{lstlisting}
 
-\chapter{Conclusions}
+\chapter*{Conclusions}
+\addcontentsline{toc}{chapter}{Conclusions} \markboth{CONCLUSIONS}{}
 
 As mentioned in the begining of this document, Nmap is a complex tool. As such, this guide tried to act as an introduction to some of its most common usage scenarios. It is the author's hope that his efforts weren't in vain.
 

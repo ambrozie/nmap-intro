@@ -1,0 +1,9 @@
+# don't include unnecessary texnic center and latex intermediate files
+*.aux
+*.dvi
+*.log
+*.out
+*.synctex
+*.tcp
+*.toc
+*.tps

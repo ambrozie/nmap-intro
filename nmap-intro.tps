@@ -14,11 +14,11 @@ NormalPos.top=26
 NormalPos.right=1253
 NormalPos.bottom=626
 Class=LaTeXView
-Document=NmapIntro.tex
+Document=nmap-intro.tex
 
 [Frame0_View0,0]
-TopLine=98
-Cursor=4629
+TopLine=485
+Cursor=25479
 
 [SessionInfo]
 FrameCount=1

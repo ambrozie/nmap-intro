@@ -7,6 +7,8 @@
 \usepackage[utf8x]{inputenc}
 \usepackage{lmodern} %Type1-font for non-english texts and characters
 
+\usepackage{inconsolata}
+
 
 %% Packages for Graphics & Figures %%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -18,14 +20,16 @@
 \usepackage{listings}
 \usepackage{xcolor}
 
-\captionsetup[lstlisting]{font={small,tt}}
+%\captionsetup[lstlisting]{font={small,tt}}
+\captionsetup[lstlisting]{font={small}}
+
 
 \definecolor{light-gray}{gray}{0.90}
 
 \lstset{ %
 	basicstyle=\ttfamily,
   backgroundcolor=\color{light-gray},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
-  basicstyle=\scriptsize,        				% the size of the fonts that are used for the code
+  basicstyle=\small,        				% the size of the fonts that are used for the code
   breakatwhitespace=false,         			% sets if automatic breaks should only happen at whitespace
   breaklines=true,                 			% sets automatic line breaking
   captionpos=b,                    			% sets the caption-position to bottom
@@ -35,6 +39,7 @@
   %extendedchars=true,              		% lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
   %frame=single,                    		% adds a frame around the code
   keepspaces=true,                 			% keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+	columns=flexible,
   %keywordstyle=\color{blue},      			% keyword style
   %language=Octave,                 		% the language of the code
   %morekeywords={*,...},            		% if you want to add more keywords to the set
@@ -148,7 +153,7 @@ Nmap reports the state combinations open|filtered and closed|filtered when it ca
 
 The simplest way of running Nmap is by executing the \texttt{nmap target} command in your console. Here \texttt{target} can be an IP address (e.g. 192.168.60.2) or a hostname (e.g. vmware.host). In addition, Nmap supports CIDR-style addressing, multiple host specifications etc\footnote{Detailed information about specifying Nmap targets is available at \url{http://nmap.org/book/man-target-specification.html}}.
 
-\begin{lstlisting}[title=A Nmap scan with no options]
+\begin{lstlisting}[title=A sample Nmap scan with no options]
 root@kali:~# nmap vm.host
 
 Starting Nmap 6.47 ( http://nmap.org ) at 2014-11-11 19:05 EET
@@ -173,7 +178,7 @@ Network scans usually begin by discovering which targets on the network are onli
 
 The -sP option instructs Nmap not to do a port scan after host discovery, and only print out the available hosts that respond to this scan. The default host discovery consists of an ICMP echo request, a TCP SYN segment to destination port 443, a TCP ACK segment to destination port 80, and an ICMP timestamp request. Also, for targets which are on a local ethernet network, an ARP scan is used.
 
-\begin{lstlisting}[title=A Nmap scan using the No Port Scan option]
+\begin{lstlisting}[title=A sample Nmap scan using the No Port Scan option]
 root@kali:~# nmap -sP scanme.nmap.org
 
 Starting Nmap 6.47 ( http://nmap.org ) at 2014-11-05 15:25 EET
@@ -186,7 +191,7 @@ Nmap done: 1 IP address (1 host up) scanned in 0.21 seconds
 
 When scanning hosts in an ethernet LAN, the -PR option instructs Nmap to perform an ARP (Address Resolution Protocol) ping on the specified target. This type of discovery is much faster and more reliable than IP-based scans.
 
-\begin{lstlisting}[title=A Nmap scan using the ARP Ping option]
+\begin{lstlisting}[title=A sample Nmap scan using the ARP Ping option]
 root@kali:~# nmap -PR -sP vm.host
 
 Starting Nmap 6.47 ( http://nmap.org ) at 2014-11-27 18:24 EET
@@ -200,7 +205,7 @@ Nmap done: 1 IP address (1 host up) scanned in 0.14 seconds
 
 The -Pn option instructs Nmap to skip the default host discovery step and perform a port scan on the target hosts.
 
-\begin{lstlisting}[title=A Nmap scan using the No Ping option]
+\begin{lstlisting}[title=A sample Nmap scan using the No Ping option]
 root@kali:~# nmap -Pn scanme.nmap.org
 
 Starting Nmap 6.47 ( http://nmap.org ) at 2014-11-27 18:46 EET

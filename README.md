@@ -4,7 +4,7 @@ This guide tries to act as an introduction to Nmap for the purposes of host disc
 
 # TODO
 
-- [ ] Second page numbering issue
+- [X] Second page numbering issue
 - [ ] Mention -T and -n
 
 # Additional Nmap Useful Resources

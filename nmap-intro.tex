@@ -1,30 +1,30 @@
 \documentclass[a4paper,oneside,12pt]{book}
 
-%% Language %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\usepackage[USenglish]{babel} %francais, polish, spanish, ...
+\usepackage[USenglish]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8x]{inputenc}
-\usepackage{lmodern} %Type1-font for non-english texts and characters
+\usepackage{lmodern}
 
 \usepackage{inconsolata}
 
-
-%% Packages for Graphics & Figures %%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\usepackage{graphicx} %%For loading graphic files
+\usepackage{graphicx}
 \graphicspath{ {figures/} }
 
-%% Other Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{caption}
 \usepackage{listings}
 \usepackage{xcolor}
 
+\usepackage{titlesec}
+
+\titleformat{\chapter}
+  {\Large\bfseries} % format
+  {}                % label
+  {0pt}             % sep
+  {\huge}           % before-code
+
 \captionsetup[lstlisting]{font={small}}
 
-
 \definecolor{light-gray}{gray}{0.90}
-
 
 \lstset{ %
 	basicstyle=\small\ttfamily,						% the size and style of the fonts that are used for the code
@@ -55,7 +55,7 @@
   %title=\lstname                   		% show the filename of files included with \lstinputlisting; also try caption instead of title
 }
 
-\usepackage{hyperref}
+\usepackage[pdfpagelabels]{hyperref}
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -64,7 +64,7 @@
     urlcolor=black
 }
 
-%% A motivation environment %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% A motivation environment
 
 \newenvironment{motivation}
 {
@@ -75,9 +75,8 @@
    \clearpage
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Options / Modifications
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
 
 % Book's title and subtitle
 \title{\Huge \textbf{An Introduction to Nmap} \\ \huge with a Focus on Information Gathering}
@@ -86,19 +85,13 @@
 	%Military Technical Academy\\
 	%Bucharest, Romania
 	%}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% THE DOCUMENT
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{document}
-
-%% Frontmatter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{Alph}
+\begin{titlepage}
+\maketitle
+\thispagestyle{empty}
+\end{titlepage}
 
 \pagenumbering{roman}
-\pagestyle{empty}
-
-\maketitle
 
 \begin{motivation}
 During the information gathering phase of a penetration test, tools such as Nmap can be helpful in allowing one to discover what systems are alive on the target network and the software they're running. This information can later be used during the subsequent phases of the penetration test.
@@ -106,17 +99,14 @@ During the information gathering phase of a penetration test, tools such as Nmap
 Since Nmap is a complex tool, someone who's just getting started might feel overwhelmed by the myriad of options. This guide tries to act as an introduction to Nmap for the purposes of host discovery, port scanning, version detection and OS fingerprinting.
 \end{motivation}
 
-\tableofcontents %Table of contents
+\tableofcontents
 \thispagestyle{empty}
 
-%% Mainmatter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\pagestyle{plain} %Now display headings: headings / fancy / ...
+\pagestyle{plain}
 \clearpage
 \pagenumbering{arabic}
 
-\chapter*{Introduction}
-\addcontentsline{toc}{chapter}{Introduction} \markboth{INTRODUCTION}{}
+\chapter{Introduction}
 This guide assumes the reader has basic knowledge of the Internet Protocol suite (how TCP and UDP are related, how they use IP, what IP addresses and port numbers are and knowledge of the different TCP flags)\footnote{A good reference on the Internet protocol suite is TCP/IP Illustrated, Volume 1: The Protocols (2nd Edition) by Kevin R. Fall and W. Richard Stevens}.
 
 \section{Setup}
@@ -168,8 +158,7 @@ Nmap done: 1 IP address (1 host up) scanned in 1.24 seconds
 
 By default, Nmap scans the most commonly used 1000 TCP ports on the target host. The \texttt{-p} option can be used for specifying which ports should be scanned (e.g. the argument \texttt{-pU:53,111,137,T:21-25,80,139,8080} instructs Nmap to scan UDP ports 53, 111 and 137, as well as TCP ports from 21 to 25, 80, 139 and 8080).
 
-\chapter*{Host Discovery}
-\addcontentsline{toc}{chapter}{Host Discovery} \markboth{HOST DISCOVERY}{}
+\chapter{Host Discovery}
 
 Network scans usually begin by discovering which targets on the network are online and thus worth deeper investigation.
 
@@ -224,8 +213,7 @@ PORT      STATE    SERVICE
 Nmap done: 1 IP address (1 host up) scanned in 794.23 seconds
 \end{lstlisting}
 
-\chapter*{Port Scanning}
-\addcontentsline{toc}{chapter}{Port Scanning} \markboth{PORT SCANNING}{}
+\chapter{Port Scanning}
 
 After making sure the target system is alive, the natural next step is trying to identify the system's ports states. And while Nmap has evolved in functionality over the years, port scanning remains its core function.
 
@@ -408,8 +396,7 @@ PORT    STATE         SERVICE
 Nmap done: 1 IP address (1 host up) scanned in 1.49 seconds
 \end{lstlisting}
 
-\chapter*{Version Detection}
-\addcontentsline{toc}{chapter}{Version Detection} \markboth{VERSION DETECTION}{}
+\chapter{Version Detection}
 
 While it is useful to know whether certain ports on a remote machine are open or closed, you sometimes want to know which email, DNS and HTTP servers are running and their respective versions. This might be extremely useful, because having an accurate version number helps dramatically in determining which exploits a server is vulnerable to. Thus, Nmap provides the -sV option for enabling version detection.
 
@@ -433,8 +420,7 @@ Service detection performed. Please report any incorrect results at http://nmap.
 Nmap done: 1 IP address (1 host up) scanned in 10.17 seconds
 \end{lstlisting}
 
-\chapter*{OS Detection}
-\addcontentsline{toc}{chapter}{OS Detection} \markboth{OS DETECTION}{}
+\chapter{OS Detection}
 
 Another useful feature provided by Nmap is remote OS detection using TCP/IP stack fingerprinting.
 
@@ -467,8 +453,7 @@ OS detection performed. Please report any incorrect results at http://nmap.org/s
 Nmap done: 1 IP address (1 host up) scanned in 152.86 seconds
 \end{lstlisting}
 
-\chapter*{Conclusions}
-\addcontentsline{toc}{chapter}{Conclusions} \markboth{CONCLUSIONS}{}
+\chapter{Conclusions}
 
 As mentioned in the begining of this document, Nmap is a complex tool. As such, this guide tried to act as an introduction to some of its most common usage scenarios. It is the author's hope that his efforts weren't in vain.
 
